@@ -30,7 +30,10 @@ yii::$app->sns->generateEndpoint($customerObject, 'platformApplicationArn');
 
 ## Subscription
 ```php
-yii::$app->sns->generateSubscriptionArn('topicArn', 'platformApplicationArn');
+$topicArn = 'topicArn';
+$platformApplicationArn = 'platformApplicationArn';
+
+yii::$app->sns->generateSubscriptionArn($topicArn, $platformApplicationArn);
 ```
 
 ## publish
@@ -47,8 +50,9 @@ $message = json_encode(
                                "name" => 'restaurant name'
                            ),
                        )
-                   );*/ // test message
+            ); // test message
 $message = json_encode(["default" => "test", "APNS" => $message]);
+$topicArn = 'topicArn';
 
-yii::$app->sns->publish('topicArn', $message,$subject='');
+yii::$app->sns->publish($topicArn, $message,$subject='');
 ```
